@@ -1,4 +1,4 @@
-Note - moded for no UID files.
+Note - moded for no UID files
 # Godot Engine
 
 <p align="center">
