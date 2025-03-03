@@ -1328,9 +1328,7 @@ void EditorFileSystem::_process_file_system(const ScannedDirectory *p_scan_dir, 
 				}
 			}
 
-            bool generate_uid_files = GLOBAL_GET("editor/resource/generate_uid_files");
-	     	bool generate_uid_files_for_addons = GLOBAL_GET("editor/resource/generate_uid_files_for_addons");
-			if (ResourceLoader::should_create_uid_file(path) && generate_uid_files && (generate_uid_files_for_addons || !path.begins_with("res://addons/"))) {
+			if (ResourceLoader::should_create_uid_file(path)) {
 				// Create a UID file and new UID, if it's invalid.
 				Ref<FileAccess> f = FileAccess::open(path + ".uid", FileAccess::WRITE);
 				if (f.is_valid()) {
@@ -2420,9 +2418,7 @@ void EditorFileSystem::update_files(const Vector<String> &p_script_paths) {
 
 				ResourceUID::get_singleton()->update_cache();
 			} else {
-                bool generate_uid_files = GLOBAL_GET("editor/resource/generate_uid_files");
-	     		bool generate_uid_files_for_addons = GLOBAL_GET("editor/resource/generate_uid_files_for_addons");
-				if (ResourceLoader::should_create_uid_file(file) && generate_uid_files && (generate_uid_files_for_addons || !path.begins_with("res://addons/"))) {
+				if (ResourceLoader::should_create_uid_file(file)) {
 					Ref<FileAccess> f = FileAccess::open(file + ".uid", FileAccess::WRITE);
 					if (f.is_valid()) {
 						const ResourceUID::ID id = ResourceUID::get_singleton()->create_id();
