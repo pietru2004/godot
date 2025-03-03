@@ -289,6 +289,9 @@ void register_editor_types() {
 
 	GLOBAL_DEF("editor/version_control/plugin_name", "");
 	GLOBAL_DEF("editor/version_control/autoload_on_startup", false);
+	
+	GLOBAL_DEF("editor/resource/generate_uid_files", false);
+	GLOBAL_DEF("editor/resource/generate_uid_files_for_addons", false);
 
 	EditorInterface::create();
 	Engine::Singleton ei_singleton = Engine::Singleton("EditorInterface", EditorInterface::get_singleton());
@@ -301,8 +304,6 @@ void register_editor_types() {
 
 	OS::get_singleton()->benchmark_end_measure("Editor", "Register Types");
 
-    GLOBAL_DEF("editor/resource/generate_uid_files", false);
-	GLOBAL_DEF("editor/resource/generate_uid_files_for_addons", false);
 }
 
 void unregister_editor_types() {
