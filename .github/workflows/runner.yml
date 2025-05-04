@@ -6,7 +6,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # First stage: Only static checks, fast and prevent expensive builds from running.
+  # First stage: Only static checks, fast and prevent expensive builds from running.a
 
   static-checks:
     if: "!vars.DISABLE_GODOT_CI"
